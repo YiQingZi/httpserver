@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head> 
+		<meta charset="utf-8"> 
+		<title>工作报告系统</title> 
+		<style>
+		.cities {
+			display: flex;
+		} 
+		</style>
+		
+		<style>
+		.top_but_margin {
+			margin: 5px 0px 5px 0px;
+		} 
+		</style>
+		
+		<style>
+		.lift_r_margin {
+			margin: 0px 5px 0px 5px;
+		} 
+		</style>
+		
+		<script type="text/javascript">
+		
+		
+			var A_REPORT_LIST = 'SLM755,SLM757,SLB742,SLM758,SLB748,SLM755L,SLB749,SLB741,SLM752,SLB760,SLM756,SLB761,SLB742W,SLB763,SLB765,SLB741W,SLB748W,SLB767,SLB769,SLB781,SLB788,SLB782,SLB783,SLB789,SLB765XQ,SLB761XQ,SLM758W,SLM759,SLT187,SLB786,SLB785,SLB787,SLM900,SLM755LE,SLM300,SLB763P,MC501,MC502,MC503,MC506,MC509,MC510,MT511,MT512,MC508,MC513,SLM758S,SLM310,SLM320,SLM500,MC518,MC519,MC521,MC520,MT523,MC565X,MC525,MC526,MC528,SLM500S,SLM500QC,SLM500QW,SLM330,MC529,MC901,SRM900,MC902,MC561,MC301,MT533,SLM326,MT903,MC531,MC532,SLM328,SLM920,SRM910,MC302,MT303,MT535,MC536,MT537,MC905,MC907,MC908,MC329,SLM550,MC538,SLM921,SM130,SLM322,SLM322M,SLM322E,SLM326S,SLM330S,SLM320S,SLM320P,SLM320PS,SLM326E,MT906,MC551,SLM320H,SLM326L,MC557,MC582,SRM930,SRM935,MC507,MC541,MC552,MC583,MT504,MT545,SNM909,SRM900L,平台EVB项目,非自研项目,预研项目,其它,事假';
+			
+			var REPORT_LIST = A_REPORT_LIST.split(',');
+			function get_project(){
+				var x;
+				for(x in REPORT_LIST){
+					document.write('<option value="'+REPORT_LIST[x]+'"></option>');
+				}
+			}
+		
+			function display(){  
+				var traget2 = document.getElementById("project_2");
+				var traget3 = document.getElementById("project_3");
+				var traget4 = document.getElementById("project_4");
+				var traget5 = document.getElementById("project_5");
+				var traget6 = document.getElementById("project_6");
+				var traget7 = document.getElementById("project_7");
+				var traget8 = document.getElementById("project_8");
+				var display_max = document.getElementById("display_max");
+				var count = document.getElementById("count1");
+				
+				if (traget2.style.display=="table-row"){
+					if (traget3.style.display=="table-row"){
+						if (traget4.style.display=="table-row"){
+							if (traget5.style.display=="table-row"){
+								if (traget6.style.display=="table-row"){
+									if (traget7.style.display=="table-row"){
+										if (traget8.style.display=="table-row"){
+											display_max.style.display="flex"; 
+										}else{
+											traget8.style.display = "table-row";
+											count.value="8" ;
+											el_setRequired("8")
+										}
+									}else{
+										traget7.style.display = "table-row";
+										count.value="7";
+										el_setRequired("7")
+									}
+								}else{
+									traget6.style.display = "table-row";
+									count.value="6";
+									el_setRequired("6")
+								}
+							}else{
+								traget5.style.display = "table-row";
+								count.value="5";
+								el_setRequired("5")
+							}
+						}else{
+							traget4.style.display = "table-row";
+							count.value="4";
+							el_setRequired("4")
+						}
+					}else{
+						traget3.style.display = "table-row";
+						count.value="3";
+						el_setRequired("3")
+					}
+				}else{
+					traget2.style.display = "table-row";
+					count.value="2";
+					el_setRequired("2")
+				}
+		   }  
+		   
+			function dis_display(){
+		   				var traget2 = document.getElementById("project_2");
+		   				var traget3 = document.getElementById("project_3");
+		   				var traget4 = document.getElementById("project_4");
+		   				var traget5 = document.getElementById("project_5");
+		   				var traget6 = document.getElementById("project_6");
+		   				var traget7 = document.getElementById("project_7");
+		   				var traget8 = document.getElementById("project_8");
+		   				var display_max = document.getElementById("display_max");
+						var count = document.getElementById("count1");
+		   				display_max.style.display="none"; 
+		   				if (traget8.style.display=="none"){
+		   					if (traget7.style.display=="none"){
+		   						if (traget6.style.display=="none"){
+		   							if (traget5.style.display=="none"){
+		   								if (traget4.style.display=="none"){
+		   									if (traget3.style.display=="none"){
+		   										if (traget2.style.display=="none"){
+		   											
+		   										}else{
+		   											traget2.style.display="none";
+													count.value="1";
+													el_removeRequired("2")
+		   										}
+		   									}else{
+		   										traget3.style.display="none";
+												count.value="2";
+												el_removeRequired("3")
+		   									}
+		   								}else{
+		   									traget4.style.display="none";
+											count.value="3";
+											el_removeRequired("4")
+		   								}
+		   							}else{
+		   								traget5.style.display="none";
+										count.value="4";
+										el_removeRequired("5")
+		   							}
+		   						}else{
+		   							traget6.style.display="none";
+									count.value="5";
+									el_removeRequired("6")
+		   						}
+		   					}else{
+		   						traget7.style.display="none";
+								count.value="6";
+								el_removeRequired("7")
+		   					}
+		   				}else{
+		   					traget8.style.display="none"; 
+							count.value="7";
+							el_removeRequired("8")
+		   				}
+		   }  
+		   
+			function el_setRequired(id){
+				document.getElementsByName("project_"+id)[0].setAttribute("required","required");
+				document.getElementsByName("progress_"+id)[0].setAttribute("required","required");
+				document.getElementsByName("time_"+id)[0].setAttribute("required","required");
+				document.getElementsByName("task_"+id)[0].setAttribute("required","required");
+				document.getElementsByName("introduction_"+id)[0].setAttribute("required","required");
+			}
+			
+			function el_removeRequired(id){
+				document.getElementsByName("project_"+id)[0].removeAttribute("required");
+				document.getElementsByName("progress_"+id)[0].removeAttribute("required");
+				document.getElementsByName("time_"+id)[0].removeAttribute("required");
+				document.getElementsByName("task_"+id)[0].removeAttribute("required");
+				document.getElementsByName("introduction_"+id)[0].removeAttribute("required");
+			}
+			
+			function el_removeRequired_all(){
+				var list_id = [1,2,3,4,5,6,7,8];
+				var id;
+				for(id in list_id){
+					document.getElementsByName("project_"+list_id[id])[0].removeAttribute("required");
+					document.getElementsByName("progress_"+list_id[id])[0].removeAttribute("required");
+					document.getElementsByName("time_"+list_id[id])[0].removeAttribute("required");
+					document.getElementsByName("task_"+list_id[id])[0].removeAttribute("required");
+					document.getElementsByName("introduction_"+list_id[id])[0].removeAttribute("required");
+				}
+			}
+		
+			function wait(id){
+				
+				document.getElementById(id).setAttribute("disabled","ture");
+				
+			}
+			
+			function input_only_project(id){
+				
+				var el = document.getElementById(id);
+				var result = el.value;
+				var x;
+				if (result == ''){
+					return;
+				}
+				for (x in REPORT_LIST){
+					if (result == REPORT_LIST[x]){
+						return;
+					}
+				}
+				alert(result+" - 项目名称不正确！");
+			}
+			
+			function check_date(){
+				var el_1 = document.getElementById(id="date_1");
+				var el_2 = document.getElementById(id="date_2");
+				var date_start = el_1.value;
+				var date_end = el_2.value;
+				var list_1 = date_start.split('-');//length
+				var list_2 = date_end.split('-');
+				if (list_1.length != 3){
+					alert("日期格式不正确");
+					el_1.value="";
+					return;
+				}else if(list_2.length != 3){
+					alert("日期格式不正确");
+					el_2.value="";
+					return;
+				}else{
+					
+					if (parseInt(list_1[0]) > parseInt(list_2[0])){
+						alert("结束日期不能小于开始日期");
+					}else if ( parseInt(list_1[1]) > parseInt(list_2[1]) ){
+						alert("结束日期不能小于开始日期");
+					}else if ( parseInt(list_1[1]) < parseInt(list_2[1]) ){
+						return;
+					}else if(parseInt(list_1[2]) >= parseInt(list_2[2]) ){
+						alert("结束日期不能小于开始日期");
+					}else{
+						return;
+					}
+					el_2.value="";
+				}
+			}
+			
+		</script>
+	</head>
+
+	<body align="center" >
+		
+		<div style="width: 100%;margin: 0 auto;">
+			
+		
+		
+		    <header align="center" >
+				<div align="left" >
+					<a href="./">
+						<img src="https://www.meigsmart.com/userfiles/images/2020/03/23/2020032311354713.png" style="width: 200px;" alt="上海·美格" />
+					</a>
+				</div>
+				<div align="center">
+					<h1>工作报告系统</h1>
+					<p>美格 · 测试</p>
+					<p><time pubdate datetime="2021-07-19"></time></p>
+				</div>
+		    </header>
+		
+
+	
+	
+			<div style="djustify-content:center;">
+				
+				<fieldset style="margin: 10px 0px 30px 0px;">
+					<legend>查 询</legend>
+				
+					<div style="display:flex;justify-content:center;">
+						
+							<div style="display:flex;justify-content:center;">
+								
+								<fieldset>
+								<form action="." method="POST">
+									<div style="display:flex;justify-content:center;">
+										姓名：<select  style="margin: 0px 5px 0px 2px;" required="required" name="tester_check">
+										<option value=""></option>
+										<option value="廖林梅">廖林梅</option>
+										<option value="陈慧英">陈慧英</option>
+										<option value="李原原">李原原</option>
+										<option value="易花萍">易花萍</option>
+										<option value="苏新新">苏新新</option>
+										<option value="厍志敏">厍志敏</option>
+										<option value="程思">程思</option>
+										<option value="娄新伟">娄新伟</option>
+										<option value="汪国全">汪国全</option>
+										
+										<option value="陈云霞">陈云霞</option>
+										<option value="郭子祥">郭子祥</option>
+										<option value="曹粉粉">曹粉粉</option>
+										<option value="段晓杰">段晓杰</option>
+										<option value="康敏">康敏</option>
+										<option value="汪唯">汪唯</option>
+										<option value="薛鹏">薛鹏</option>
+										<option value="张冶">张冶</option>
+										<option value="杨侨">杨侨</option>
+										<option value="邢刚">邢刚</option>
+										<option value="靳发祥">靳发祥</option>
+										
+										<option value="鲍乐">鲍乐</option>
+										<option value="王龙">王龙</option>
+										
+										<option value="孙小元">孙小元</option>
+										<option value="刘栋">刘栋</option>
+										<option value="孙德晶">孙德晶</option>
+										<option value="杨越">杨越</option>
+										<option value="刘莉">刘莉</option>
+										<option value="张岩">张岩</option>
+										<option value="李士华">李士华</option>
+										<option value="吴小莲">吴小莲</option>
+										<option value="陈志钢">陈志钢</option>
+										<option value="王玺敏">王玺敏</option>
+										<option value="周文侠">周文侠</option>
+										
+										<option value="方成">方成</option>
+										<option value="赵凤銮">赵凤銮</option>
+										
+										<option value="徐新宇">徐新宇</option>
+										<option value="徐新宇-硬测">徐新宇-硬测</option>
+										<option value="叶琦">叶琦</option>
+										<option value="陈蓉">陈蓉</option>
+										<option value="杨晓佳">杨晓佳</option>
+										<option value="张明明">张明明</option>
+										<option value="陆辰辰">陆辰辰</option>
+										<!--option value="王小东">王小东</option-->
+										<option value="庄春辉">庄春辉</option>
+										<option value="卜书静">卜书静</option>
+										</select>
+										日期：<input type="date" style="margin: 0px 5px 0px 2px;" name="check_day_start_time" required="required" value=""/>
+										<input type="submit" style="margin: 0px 5px 0px 2px;" name="my-get-day" value="查询日报" />
+									</div>
+								</form>
+								</fieldset>
+								
+								<fieldset>
+								<form action="." method="POST">
+									<div style="display:flex;justify-content:center;">
+										日期：<input type="date" id="date_1" style="margin: 0px 5px 0px 2px;" name="check_dep_start_time" required="required" value=""/>
+										~<input type="date" id="date_2"  style="margin: 0px 5px 0px 2px;" name="check_dep_end_time" value="" onchange="check_date()"/>
+										<input type="submit" style="margin: 0px 5px 0px 2px;" name="my-get-day-all" value="部门日报" />
+									</div>
+								</form>
+								</fieldset>
+								
+								<fieldset>
+								<form action="." method="POST">
+									<div style="display:flex;justify-content:center;">
+											<input list="source" id="ipt" name="project_check" required="required" style="margin: 0px 5px 0px 2px;width: 100px;" value=""/>
+											<datalist id="source">
+												<script type="text/javascript">
+													get_project();
+												</script>
+											</datalist>
+										<input type="submit" style="margin: 0px 5px 0px 2px;" name="my-get-project-all" value="项目总览" />
+									</div>
+								</form>
+								</fieldset>
+								
+								<fieldset>
+								<form action="." method="POST">
+									<div style="display:flex;justify-content:center;">
+										日期：<input type="date" style="margin: 0px 5px 0px 2px;" name="check_put-user_time" required="required" value=""/>
+										<input type="submit" style="margin: 0px 5px 0px 2px;" name="check-put-user" value="未提交?" />
+									</div>
+								</form>
+								</fieldset>
+							</div>
+						
+					</div>
+				</fieldset>
+				
+				<fieldset>
+					<legend>提 交</legend>
+					<div style="display:flex;justify-content:center;">
+						
+						<form action="." method="POST">
+							<fieldset>
+								<legend>基本信息</legend>
+									<div style="display:flex;justify-content:center;" class="top_but_margin">
+										姓名：<select  style="margin: 0px 15px 0px 2px;" required="required" name="tester">
+										<option value=""></option>
+										<option value="廖林梅">廖林梅</option>
+										<option value="陈慧英">陈慧英</option>
+										<option value="李原原">李原原</option>
+										<option value="易花萍">易花萍</option>
+										<option value="苏新新">苏新新</option>
+										<option value="厍志敏">厍志敏</option>
+										<option value="程思">程思</option>
+										<option value="娄新伟">娄新伟</option>
+										<option value="汪国全">汪国全</option>
+										
+										<option value="陈云霞">陈云霞</option>
+										<option value="郭子祥">郭子祥</option>
+										<option value="曹粉粉">曹粉粉</option>
+										<option value="段晓杰">段晓杰</option>
+										<option value="康敏">康敏</option>
+										<option value="汪唯">汪唯</option>
+										<option value="薛鹏">薛鹏</option>
+										<option value="张冶">张冶</option>
+										<option value="杨侨">杨侨</option>
+										<option value="邢刚">邢刚</option>
+										<option value="靳发祥">靳发祥</option>
+										
+										<option value="鲍乐">鲍乐</option>
+										<option value="王龙">王龙</option>
+										<option value="孙小元">孙小元</option>
+										<option value="刘栋">刘栋</option>
+										<option value="孙德晶">孙德晶</option>
+										<option value="杨越">杨越</option>
+										<option value="刘莉">刘莉</option>
+										<option value="张岩">张岩</option>
+										<option value="李士华">李士华</option>
+										<option value="吴小莲">吴小莲</option>
+										<option value="陈志钢">陈志钢</option>
+										<option value="王玺敏">王玺敏</option>
+										<option value="周文侠">周文侠</option>
+										
+										<option value="方成">方成</option>
+										<option value="赵凤銮">赵凤銮</option>
+										
+										<option value="徐新宇">徐新宇</option>
+										<option value="徐新宇-硬测">徐新宇-硬测</option>
+										<option value="叶琦">叶琦</option>
+										<option value="陈蓉">陈蓉</option>
+										<option value="杨晓佳">杨晓佳</option>
+										<option value="张明明">张明明</option>
+										<option value="陆辰辰">陆辰辰</option>
+										<!--option value="王小东">王小东</option-->
+										<option value="庄春辉">庄春辉</option>
+										<option value="卜书静">卜书静</option>
+										</select>
+										日期：<input type="date" style="margin: 0px 15px 0px 2px;" name="start_time" required="required" value=""/>
+										<input id="count1" type="text" style="display: none;" name="count" value="4"/>
+										<input type="submit" style="margin: 0px 15px 0px 2px;" name="my-day" value="发送日报"  />
+										<input type="submit" style="margin: 0px 15px 0px 2px;" name="my-mom" value="发送月报" onclick="el_removeRequired_all()"/>
+										<a href="./week_report.html">
+											<p style="margin: 0px 15px 0px 2px;">点击查看周报</p>
+										</a>
+									</div>
+							</fieldset>
+							
+							
+							<fieldset>
+								<legend>任务信息</legend>
+								
+								<table>
+									<tr >
+										<th>项目</th>
+										<th>进度·%</th>
+										<th>工时·H</th>
+										<th>任务简介</th>
+										<th>工作情况简介</th>
+										<th>备注</th>
+									</tr>
+									
+
+									
+									<tr id="project_1" style="display: table-row;">
+										<td> 
+											<input list="source" id="ipt1" name="project_1" required="required" style="width: 100px;height: 23px;" value="" onchange="input_only_project('ipt1')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="progress_1" required="required" style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^1\d{2,}.*/,'100')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="time_1" required="required" style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^3\d.*/,'24').replace(/^2[5-9].*/,'24')"/>
+										</td>
+										
+										<td> 
+											<!--input name="task_1" required="required" style="width: 300px;height: 23px;" value=""/-->
+											<textarea name="task_1" required="required" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="introduction_1" required="required" style="width: 500px;height: 23px;" value=""/-->
+											<textarea name="introduction_1" required="required" rows="4" style="width: 500px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="remarks_1" style="width: 300px;height: 23px;" value=""/-->
+											<textarea name="remarks_1" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+									</tr>
+
+
+
+									<tr id="project_2" style="display: table-row;">
+										<td> 
+											<input list="source" id="ipt2" name="project_2" required="required" style="width: 100px;height: 23px;" onchange="input_only_project('ipt2')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="progress_2" required="required" style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^1\d{2,}.*/,'100')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="time_2" required="required" style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^3\d.*/,'24').replace(/^2[5-9].*/,'24')"/>
+										</td>
+										
+										<td> 
+											<!--input name="task_1" required="required" style="width: 300px;height: 23px;" value=""/-->
+											<textarea name="task_2" required="required" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="introduction_1" required="required" style="width: 500px;height: 23px;" value=""/-->
+											<textarea name="introduction_2" required="required" rows="4" style="width: 500px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="remarks_1" style="width: 300px;height: 23px;" value=""/-->
+											<textarea name="remarks_2" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+									</tr>
+
+
+
+									<tr id="project_3" style="display: table-row;">
+										<td> 
+											<input list="source" id="ipt3" name="project_3" required="required" style="width: 100px;height: 23px;" onchange="input_only_project('ipt3')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="progress_3" required="required" style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^1\d{2,}.*/,'100')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="time_3" required="required" style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^3\d.*/,'24').replace(/^2[5-9].*/,'24')"/>
+										</td>
+										
+										<td> 
+											<!--input name="task_1" required="required" style="width: 300px;height: 23px;" value=""/-->
+											<textarea name="task_3" required="required" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="introduction_1" required="required" style="width: 500px;height: 23px;" value=""/-->
+											<textarea name="introduction_3" required="required" rows="4" style="width: 500px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="remarks_1" style="width: 300px;height: 23px;" value=""/-->
+											<textarea name="remarks_3" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+									</tr>
+
+
+
+									<tr id="project_4" style="display: table-row;">
+										<td> 
+											<input list="source" id="ipt4" name="project_4" required="required" style="width: 100px;height: 23px;" onchange="input_only_project('ipt4')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="progress_4" required="required" style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^1\d{2,}.*/,'100')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="time_4" required="required" style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^3\d.*/,'24').replace(/^2[5-9].*/,'24')"/>
+										</td>
+										
+										<td> 
+											<!--input name="task_1" required="required" style="width: 300px;height: 23px;" value=""/-->
+											<textarea name="task_4" required="required" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="introduction_1" required="required" style="width: 500px;height: 23px;" value=""/-->
+											<textarea name="introduction_4" required="required" rows="4" style="width: 500px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="remarks_1" style="width: 300px;height: 23px;" value=""/-->
+											<textarea name="remarks_4" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+									</tr>
+
+
+
+									<tr id="project_5" style="display: none;">
+										<td> 
+											<input list="source" id="ipt5" name="project_5"  style="width: 100px;height: 23px;" onchange="input_only_project('ipt5')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="progress_5"  style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^1\d{2,}.*/,'100')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="time_5"  style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^3\d.*/,'24').replace(/^2[5-9].*/,'24')"/>
+										</td>
+										
+										<td> 
+											<!--input name="task_5"  style="width: 300px;height: 23px;"/-->
+											<textarea name="task_5" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="introduction_5"  style="width: 500px;height: 23px;"/-->
+											<textarea name="introduction_5" rows="4" style="width: 500px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="remarks_5" style="width: 300px;height: 23px;"/-->
+											<textarea name="remarks_5" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+									</tr>
+
+
+
+									<tr id="project_6" style="display: none;">
+										<td> 
+											<input list="source" id="ipt6" name="project_6"  style="width: 100px;height: 23px;" onchange="input_only_project('ipt6')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="progress_6"  style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^1\d{2,}.*/,'100')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="time_6"  style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^3\d.*/,'24').replace(/^2[5-9].*/,'24')"/>
+										</td>
+										
+										<td> 
+											<!--input name="task_5"  style="width: 300px;height: 23px;"/-->
+											<textarea name="task_6" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="introduction_5"  style="width: 500px;height: 23px;"/-->
+											<textarea name="introduction_6" rows="4" style="width: 500px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="remarks_5" style="width: 300px;height: 23px;"/-->
+											<textarea name="remarks_6" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+									</tr>
+
+
+
+									<tr id="project_7" style="display: none;">
+										<td> 
+											<input list="source" id="ipt7" name="project_7"  style="width: 100px;height: 23px;" onchange="input_only_project('ipt7')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="progress_7"  style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^1\d{2,}.*/,'100')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="time_7"  style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^3\d.*/,'24').replace(/^2[5-9].*/,'24')"/>
+										</td>
+										
+										<td> 
+											<!--input name="task_5"  style="width: 300px;height: 23px;"/-->
+											<textarea name="task_7" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="introduction_5"  style="width: 500px;height: 23px;"/-->
+											<textarea name="introduction_7" rows="4" style="width: 500px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="remarks_5" style="width: 300px;height: 23px;"/-->
+											<textarea name="remarks_7" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+									</tr>
+
+
+									<tr id="project_8" style="display: none;">
+										<td> 
+											<input list="source" id="ipt8" name="project_8"  style="width: 100px;height: 23px;" onchange="input_only_project('ipt8')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="progress_8"  style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^1\d{2,}.*/,'100')"/>
+										</td>
+										
+										<td> 
+											<input type="text" name="time_8"  style="width: 60px;height: 23px;" value=""  oninput="value=value.replace(/(^\.|[^\d\.])/g,''). replace('.','$#$').replace(/\./g,'').replace('$#$','.').replace(/^([^1])(\d)\d*/, '$1$2').replace(/^3\d.*/,'24').replace(/^2[5-9].*/,'24')"/>
+										</td>
+										
+										<td> 
+											<!--input name="task_5"  style="width: 300px;height: 23px;"/-->
+											<textarea name="task_8" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="introduction_5"  style="width: 500px;height: 23px;"/-->
+											<textarea name="introduction_8" rows="4" style="width: 500px;" value=""></textarea>
+										</td>
+										
+										<td> 
+											<!--input name="remarks_5" style="width: 300px;height: 23px;"/-->
+											<textarea name="remarks_8" rows="4" style="width: 300px;" value=""></textarea>
+										</td>
+									</tr>
+
+								</table>
+							</fieldset>
+						</form>
+					</div>
+				</fieldset>
+			</div>
+			
+			<div style="display:flex;justify-content:center;" class="top_but_margin">
+				<button style="margin: 0px 15px 0px 2px;" onclick="display()">添加项目</button>
+				<button style="margin: 0px 15px 0px 2px;" onclick="dis_display()">减少条目</button>
+			</div>
+		
+			<div id="display_max" style="display: none;justify-content:center;">
+				<h1>最多只能添加8个</h1>
+			</div>
+
+			<footer align="center" >
+				<p>美格 · 测试</p>
+					<p><dfn><abbr title="发布时间：2021-09-18">版本：v1.50</abbr><a href="./update.html">更新日志</a></dfn></p>
+					<p><time 发布日期时间="2021-08-01"></time></p>
+			</footer>
+		</div>
+	</body>
+</html>

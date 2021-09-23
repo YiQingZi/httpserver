@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<title>工作报告系统</title>
+		<style>
+		.longtext50{
+			width: 18%;
+			white-space: pre-wrap;
+		}
+		
+		.longtext150{
+			width: 25%;
+			white-space: pre-wrap;
+		}
+
+		.longtext{
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		</style>
+		
+		<script type="text/javascript">
+			function check_date(){
+				var el_1 = document.getElementById(id="date_1");
+				var el_2 = document.getElementById(id="date_2");
+				var date_start = el_1.value;
+				var date_end = el_2.value;
+				var list_1 = date_start.split('-');//length
+				var list_2 = date_end.split('-');
+				if (list_1.length != 3){
+					alert("日期格式不正确");
+					el_1.value="";
+					return;
+				}else if(list_2.length != 3){
+					alert("日期格式不正确");
+					el_2.value="";
+					return;
+				}else{
+					
+					if (parseInt(list_1[0]) > parseInt(list_2[0])){
+						alert("结束日期不能小于开始日期");
+					}else if ( parseInt(list_1[1]) > parseInt(list_2[1]) ){
+						alert("结束日期不能小于开始日期");
+					}else if ( parseInt(list_1[1]) < parseInt(list_2[1]) ){
+						return;
+					}else if(parseInt(list_1[2]) >= parseInt(list_2[2]) ){
+						alert("结束日期不能小于开始日期");
+					}else{
+						return;
+					}
+					el_2.value="";
+				}
+			}
+		</script>
+	</head>
+	<body align="center">
+		<div style="width: 100%;">
+
+			<header align="center" >
+				<div align="left" >
+					<a href="./">
+						<img src="https://www.meigsmart.com/userfiles/images/2020/03/23/2020032311354713.png" style="width: 200px;" alt="上海·美格" />
+					</a>
+				</div>
+				<div align="center">
+					<h1>周报</h1>
+					<p><time pubdate datetime="2021-07-19"></time></p>
+				</div>
+			</header>
+
+			<fieldset >
+				<legend>查 询</legend>
+				<form action="./week_report.html" method="POST">
+					姓名：<select  style="margin: 0px 5px 0px 2px;" name="tester_check">
+					<option value="">请选择</option>
+					<option value="廖林梅">廖林梅</option>
+					<option value="陈慧英">陈慧英</option>
+					<option value="李原原">李原原</option>
+					<option value="易花萍">易花萍</option>
+					<option value="苏新新">苏新新</option>
+					<option value="厍志敏">厍志敏</option>
+					<option value="程思">程思</option>
+					<option value="娄新伟">娄新伟</option>
+					<option value="汪国全">汪国全</option>
+					
+					<option value="陈云霞">陈云霞</option>
+					<option value="郭子祥">郭子祥</option>
+					<option value="曹粉粉">曹粉粉</option>
+					<option value="段晓杰">段晓杰</option>
+					<option value="康敏">康敏</option>
+					<option value="汪唯">汪唯</option>
+					<option value="薛鹏">薛鹏</option>
+					<option value="张冶">张冶</option>
+					<option value="杨侨">杨侨</option>
+					<option value="邢刚">邢刚</option>
+					<option value="靳发祥">靳发祥</option>
+					
+					<option value="鲍乐">鲍乐</option>
+					<option value="王龙">王龙</option>
+					
+					<option value="孙小元">孙小元</option>
+					<option value="刘栋">刘栋</option>
+					<option value="孙德晶">孙德晶</option>
+					<option value="杨越">杨越</option>
+					<option value="刘莉">刘莉</option>
+					<option value="张岩">张岩</option>
+					<option value="李士华">李士华</option>
+					<option value="吴小莲">吴小莲</option>
+					<option value="陈志钢">陈志钢</option>
+					<option value="王玺敏">王玺敏</option>
+					<option value="周文侠">周文侠</option>
+					
+					<option value="方成">方成</option>
+					<option value="赵凤銮">赵凤銮</option>
+					
+					<option value="徐新宇">徐新宇</option>
+					<option value="徐新宇-硬测">徐新宇-硬测</option>
+					<option value="叶琦">叶琦</option>
+					<option value="陈蓉">陈蓉</option>
+					<option value="杨晓佳">杨晓佳</option>
+					<option value="张明明">张明明</option>
+					<option value="陆辰辰">陆辰辰</option>
+					<!--option value="王小东">王小东</option-->
+					<option value="庄春辉">庄春辉</option>
+					<option value="卜书静">卜书静</option>
+					</select>
+					日期：<input type="date" id="date_1" style="margin: 0px 5px 0px 2px;" name="check_dep_start_time" required="required" value=""/>
+					~<input type="date" id="date_2"  style="margin: 0px 5px 0px 2px;" name="check_dep_end_time" value="" required="required" onchange="check_date()"/>
+					<input type="submit" style="margin: 0px 5px 0px 2px;" name="my-get-week-report" value="查询周报" />
+				</form>
+			</fieldset >
+
+			<footer align="center" >
+				<p>美格 · 测试</p>
+				<p><dfn><abbr title="发布时间：2021-09-18">版本：v1.50</abbr><a href="./update.html">更新日志</a></dfn></p>
+				<p><time 发布日期时间="2021-07-20"></time></p>
+			</footer>
+		</div>
+	</body>
+</html>
